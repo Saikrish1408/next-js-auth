@@ -16,6 +16,8 @@ export async function GET(request: NextRequest) {
       data: tokenUser,
     });
   } catch (error: any) {
+    console.log(error);
+
     return NextResponse.json({
       message: "Failure to bring the Token Data",
     });

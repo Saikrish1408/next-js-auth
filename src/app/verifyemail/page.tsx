@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-async function verifyEmailPage() {
+async function VerifyEmailPage() {
   const [token, setToken] = useState("");
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
@@ -24,7 +24,7 @@ async function verifyEmailPage() {
 
   useEffect(() => {
     if (token.length > 0) {
-      verifyEmailPage();
+      VerifyEmailPage();
     }
   }, [token]);
 
@@ -53,4 +53,4 @@ async function verifyEmailPage() {
   );
 }
 
-export default verifyEmailPage;
+export default VerifyEmailPage;

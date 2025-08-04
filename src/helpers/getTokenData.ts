@@ -2,9 +2,9 @@ import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
 interface TokenPayload {
-  id: String;
-  username: String;
-  email: String;
+  id: string;
+  username: string;
+  email: string;
 }
 
 export const getTokenData = (request: NextRequest) => {
