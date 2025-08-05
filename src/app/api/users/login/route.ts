@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
     return NextResponse.json({
       message: "Error occured in Logging In",

@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
       message: "User Found",
       data: tokenUser,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
 
     return NextResponse.json({

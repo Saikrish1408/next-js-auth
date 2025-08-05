@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       status: 200,
       data: savedUser,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.log("Error in route.js");
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

@@ -67,8 +67,8 @@ export const sendVerificationEmail = async ({
 
     const mailResponse = await transport.sendMail(mailOptions);
     return mailResponse;
-  } catch (error: any) {
-    console.log(error.message);
+  } catch (error) {
+    // console.log(error.message);
     throw new Error("Can't start the Email Processing");
   }
 };

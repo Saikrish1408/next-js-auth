@@ -15,9 +15,9 @@ export default function Profile() {
       await axios.get("/api/users/logout");
       toast.success("Logged Out Successfully");
       router.push("/login");
-    } catch (error: any) {
+    } catch (error) {
       console.log(error);
-      toast.error(error);
+      throw new Error("An Error Occurred");
     }
   };
 
@@ -26,7 +26,7 @@ export default function Profile() {
       const response = await axios.get("/api/users/custommine");
       console.log(response.data);
       setData(response.data.data._id);
-    } catch (error: any) {
+    } catch (error) {
       throw new Error("Error occurred in Fetching the user details");
     }
   };
@@ -48,6 +48,7 @@ export default function Profile() {
         <button
           type="submit"
           onClick={getUserDetails}
+          className="mt-5 mb-5 px-4 py-2 bg-white text-black rounded-lg hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white transition-discrete duration-300 cursor-pointer"
         >
           Get User Details
         </button>

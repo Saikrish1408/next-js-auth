@@ -20,7 +20,7 @@ export const getTokenData = (request: NextRequest) => {
     }
 
     return decodedToken.id;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw new Error("An Error Occurred");
   }
 };

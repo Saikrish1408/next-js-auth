@@ -12,9 +12,10 @@ async function VerifyEmailPage() {
   try {
     await axios.post("/api/users/verifyemail", { token });
     setVerified(true);
-  } catch (error: any) {
-    setError(error);
-    console.log(error.message);
+  } catch (error) {
+    // setError(error);
+    // console.log(error.message);
+    throw new Error("An Error Occurred");
   }
 
   useEffect(() => {
