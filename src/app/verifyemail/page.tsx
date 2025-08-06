@@ -4,19 +4,20 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-async function VerifyEmailPage() {
+function VerifyEmailPage() {
   const [token, setToken] = useState("");
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
 
-  try {
-    await axios.post("/api/users/verifyemail", { token });
-    setVerified(true);
-  } catch (error) {
-    // setError(error);
-    // console.log(error.message);
-    throw new Error("An Error Occurred");
-  }
+  const verifyUserEmail = async () => {
+    try {
+      await axios.post("/api/users/verifyemail", { token });
+      setVerified(true);
+    } catch (error) {
+      setError(true);
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     const urltoken = window.location.search.split("=")[1];
@@ -25,7 +26,7 @@ async function VerifyEmailPage() {
 
   useEffect(() => {
     if (token.length > 0) {
-      VerifyEmailPage();
+      verifyUserEmail();
     }
   }, [token]);
 

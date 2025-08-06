@@ -21,6 +21,6 @@ export const getTokenData = (request: NextRequest) => {
 
     return decodedToken.id;
   } catch (error) {
-    throw new Error("An Error Occurred");
+    throw new Error("An Error Occurred" + error);
   }
 };

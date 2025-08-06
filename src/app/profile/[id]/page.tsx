@@ -1,7 +1,13 @@
 import connect from "@/dbConfig/dbconfig";
 import User from "@/models/UserModel";
 
-async function UserProfile({ params }: any) {
+interface UserProfileProps {
+  params: {
+    id: string;
+  };
+}
+
+async function UserProfile({ params }: UserProfileProps) {
   connect();
 
   const userId = params.id;

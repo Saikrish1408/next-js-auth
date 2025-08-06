@@ -1,4 +1,3 @@
-import connect from "@/dbConfig/dbconfig";
 import User from "@/models/UserModel";
 import bcryptjs from "bcryptjs";
 import nodemailer from "nodemailer";
@@ -40,7 +39,7 @@ export const sendVerificationEmail = async ({
 
     // CREATION OF THE TRANSPORT FOR SMTP
     // CREATION OF THE TRANSPORTER FROM MAILTRAP
-    var transport = nodemailer.createTransport({
+    const transport = nodemailer.createTransport({
       service: "Gmail",
       host: "smtp.gmail.com",
       port: 465,
@@ -69,6 +68,6 @@ export const sendVerificationEmail = async ({
     return mailResponse;
   } catch (error) {
     // console.log(error.message);
-    throw new Error("Can't start the Email Processing");
+    throw new Error("Can't start the Email Processing" + error);
   }
 };
