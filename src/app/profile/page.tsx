@@ -17,7 +17,7 @@ export default function Profile() {
       router.push("/login");
     } catch (error) {
       console.log(error);
-      throw new Error("An Error Occurred");
+      throw new Error("An Error Occurred" + error);
     }
   };
 

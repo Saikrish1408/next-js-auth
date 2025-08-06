@@ -22,7 +22,7 @@ function VerifyEmailPage() {
   useEffect(() => {
     const urltoken = window.location.search.split("=")[1];
     setToken(urltoken || "");
-  }, []);
+  });
 
   useEffect(() => {
     if (token.length > 0) {

@@ -2,11 +2,20 @@ import User from "@/models/UserModel";
 import bcryptjs from "bcryptjs";
 import nodemailer from "nodemailer";
 
+// Define types for better type safety
+type EmailType = "VERIFY" | "FORGOT";
+
+interface SendVerificationEmailParams {
+  email: string;
+  emailType: EmailType;
+  userId: string;
+}
+
 export const sendVerificationEmail = async ({
   email,
   emailType, // optionally, for extensive purposes - for verification or forgot password emails etc..,
   userId,
-}: any) => {
+}: SendVerificationEmailParams) => {
   try {
     // CREATE THE HASHED TOKEN
     const hashedToken = await bcryptjs.hash(userId.toString(), 10);
