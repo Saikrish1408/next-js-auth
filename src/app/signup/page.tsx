@@ -23,7 +23,7 @@ export default function SignupPage() {
       console.log("hehehe");
       console.log("Signup Success", response.data);
       router.push("/login");
-    } catch (error: any) {
+    } catch (error) {
       console.log("Signup Failed " + error);
     } finally {
       setLoading(false);
