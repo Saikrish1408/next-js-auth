@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 export default function Profile() {
   const router = useRouter();
-  const [data, setData] = useState("No User Details Retrived");
+  const [data, setData] = useState<string>("No User Details Retrived");
 
   const logout = async () => {
     try {
@@ -24,7 +24,8 @@ export default function Profile() {
   const getUserDetails = async () => {
     try {
       const response = await axios.get("/api/users/custommine");
-      console.log(response.data);
+      console.log(response);
+      console.log(response.data.data._id);
       setData(response.data.data._id);
     } catch (error) {
       throw new Error("Error occurred in Fetching the user details");

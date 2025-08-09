@@ -18,6 +18,7 @@ export const getTokenData = (request: NextRequest) => {
     if (!decodedToken.id) {
       throw new Error("Id Field is not present in the Token Data");
     }
+    console.log(decodedToken);
 
     return decodedToken.id;
   } catch (error) {

@@ -17,13 +17,12 @@ export default function LoginPage() {
   const onLogin = async () => {
     try {
       console.log("hahaha");
-      const response = await axios.post("api/users/login", user);
+      const response = await axios.post("/api/users/login", user);
       console.log("Login Success", response.data);
       toast(`Logged In Successfully`);
       router.push("/profile");
     } catch (error) {
       console.log(error);
-      toast(error);
     }
   };
 

@@ -6,9 +6,17 @@ import { sendVerificationEmail } from "@/helpers/helperEmail";
 
 connect();
 
+interface SignUpRequest {
+  email: string;
+  username: string;
+  password: string;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const reqBody = await request.json();
+    const reqBody: SignUpRequest = await request.json();
+    console.log("Naan thaan da leooo");
+
     const { username, email, password } = reqBody;
 
     const existedUser = await User.findOne({ email });
@@ -19,6 +27,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    console.log(existedUser);
 
     // hashing the password
     const salt = await bcryptjs.genSalt(10);
@@ -32,12 +42,14 @@ export async function POST(request: NextRequest) {
 
     const savedUser = await newUser.save();
 
+    const userIdString: string = savedUser._id.toString();
+
     // SENDING VERIFICATION EMAIL
 
     await sendVerificationEmail({
       email,
       emailType: "VERIFY",
-      userId: savedUser._id,
+      userId: userIdString,
     });
 
     return NextResponse.json({
@@ -47,6 +59,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.log("Error in route.js");
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { message: "Error Occurred in Signup Backend" },
+      { status: 500 }
+    );
   }
 }
